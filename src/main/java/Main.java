@@ -17,7 +17,7 @@ public class Main {
 
         try (FileReader file = new FileReader("src/config.txt");
              BufferedReader reader = new BufferedReader(file)) {
-             token = reader.readLine();
+            token = reader.readLine();
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -33,9 +33,11 @@ public class Main {
                         .setFlags(MessageFlag.EPHEMERAL) // Only visible for the user which invoked the command
                         .respond();
             }
+        });
 
         // Print the invite url of your bot
         System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
-    }
 
+
+    }
 }
