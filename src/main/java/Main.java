@@ -3,11 +3,13 @@ package com.github.yourname;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.entity.message.MessageFlag;
+import org.javacord.api.interaction.SlashCommand;
 import org.javacord.api.interaction.SlashCommandInteraction;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Set;
 
 public class Main {
 
@@ -34,6 +36,12 @@ public class Main {
                         .respond();
             }
         });
+
+        SlashCommand command = SlashCommand.with("ping", "Checks the functionality of this command")
+                .createGlobal(api)
+                .join();
+
+        Set<SlashCommand> commands = api.getGlobalSlashCommands().join();
 
         // Print the invite url of your bot
         System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
